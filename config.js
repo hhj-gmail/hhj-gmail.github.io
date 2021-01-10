@@ -51,6 +51,7 @@ var config = {
         "我们第一次打台球": "./imgs/taiqiu.png",
         "我们一起走的路": "./imgs/lu.png",
         "宝贝专为我做的抖音视频": "./imgs/douyin.png",
+        "你为我过的第一个生日": "./imgs/shengr.png",
         "还记得一起吃的重庆火锅": "./imgs/huoguo.png",
         // "今天是你的生日": "./imgs/birthday.jpg",
     },
