@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -19,16 +19,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="步骤：1. Node.js   npm   git  hexo安装2. GitHub注册并建立个人仓库（github.io）3. 通过SSH密钥建立hexo与github的联系安装git插件： 1npm install hexo-deployer-git --save  在_config.yml中修改配置参数： 1234deploy:  type: git  repository: git@git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo与GitHub搭建免费个人博客">
 <meta property="og:url" content="http://example.com/2021/10/22/test/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="步骤：1. Node.js   npm   git  hexo安装2. GitHub注册并建立个人仓库（github.io）3. 通过SSH密钥建立hexo与github的联系安装git插件： 1npm install hexo-deployer-git --save  在_config.yml中修改配置参数： 1234deploy:  type: git  repository: git@git">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-22T09:19:35.000Z">
-<meta property="article:modified_time" content="2021-10-22T13:20:20.319Z">
+<meta property="article:modified_time" content="2021-10-22T13:23:38.971Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -38,7 +38,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/22/test/","path":"2021/10/22/test/","title":"使用hexo与GitHub搭建免费个人博客"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/10/22/test/","path":"2021/10/22/test/","title":"使用hexo与GitHub搭建免费个人博客"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>使用hexo与GitHub搭建免费个人博客 | Hexo</title>
@@ -59,7 +59,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -85,11 +85,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -110,17 +110,17 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Node-js-npm-git-hexo%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. Node.js   npm   git  hexo安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GitHub%E6%B3%A8%E5%86%8C%E5%B9%B6%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93%EF%BC%88github-io%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. GitHub注册并建立个人仓库（github.io）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%9A%E8%BF%87SSH%E5%AF%86%E9%92%A5%E5%BB%BA%E7%AB%8Bhexo%E4%B8%8Egithub%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">3. 通过SSH密钥建立hexo与github的联系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number"></span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Node-js-npm-git-hexo%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. Node.js   npm   git  hexo安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GitHub%E6%B3%A8%E5%86%8C%E5%B9%B6%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93%EF%BC%88github-io%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. GitHub注册并建立个人仓库（github.io）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%80%9A%E8%BF%87SSH%E5%AF%86%E9%92%A5%E5%BB%BA%E7%AB%8Bhexo%E4%B8%8Egithub%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">3. 通过SSH密钥建立hexo与github的联系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -134,13 +134,13 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">1</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -157,7 +157,7 @@
     </header>
 
     
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -177,7 +177,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/22/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,10 +200,10 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="Created: 2021-10-22 17:19:35 / Modified: 21:20:20" itemprop="dateCreated datePublished" datetime="2021-10-22T17:19:35+08:00">2021-10-22</time>
+      <time title="创建时间：2021-10-22 17:19:35 / 修改时间：21:23:38" itemprop="dateCreated datePublished" datetime="2021-10-22T17:19:35+08:00">2021-10-22</time>
     </span>
 
   
@@ -224,7 +224,7 @@
 
 <p>完成后运行 <code>hexo d</code> 将网站上传部署到 GitHub Pages。</p>
 <p>完成！这时访问我们的 GitHub 域名 <code>https://用户名.github.io</code> 就可以看到 Hexo 网站了。</p>
-<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
 <li> 更换<code>theme</code>主题前，须通过<code>hexo clean</code>清除之前格式。</li>
 <li>博客发布前须通过<code>hexo g</code>生成静态页面，可通过<code>hexo s</code>本地预先检查。</li>
 </ul>
@@ -267,7 +267,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
