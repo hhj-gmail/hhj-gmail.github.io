@@ -199,10 +199,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-10-23 18:32:16 / 修改时间：22:50:56" itemprop="dateCreated datePublished" datetime="2021-10-23T18:32:16+08:00">2021-10-23</time>
+      <time title="创建时间：2021-10-23 18:32:16" itemprop="dateCreated datePublished" datetime="2021-10-23T18:32:16+08:00">2021-10-23</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-24 11:15:56" itemprop="dateModified" datetime="2021-10-24T11:15:56+08:00">2021-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -229,7 +235,50 @@
     <div class="post-body" itemprop="articleBody">
           <p>年份：2020</p>
 <p>题目：Unifying Graph Convolutional Neural Networks and Label Propagation</p>
-<p>来源：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.06755">https://arxiv.org/abs/2002.06755</a></p>
+<p>来源：https://arxiv.org/abs/2002.06755</p>
+<p>这篇文章</p>
+<h2 id="lpa与gcn">LPA与GCN</h2>
+<p>LPA(Label Propagation Algorithm): <span class="math display">\[
+Y^{(k+1)}=D^{-1} A Y^{(k)} \\
+y_{i}^{(k+1)}=y_{i}^{(0)}, \forall i \leq m
+\]</span> GCN: <span class="math display">\[
+X^{(k+1)}=\sigma\left(D^{-1} A X^{(k)} W^{(k)}\right)
+\]</span> 在LPA中每一节点的最终标签是其近邻节点标签的加权平均。如将激活函数<span class="math inline">\(\sigma\)</span>以及<span class="math inline">\(W^{(\cdot)}\)</span>分别看成identity function以及identity matrices, 则GCN每一节点的节点表示可以表示为其近邻节点的节点表示的加权平均。LPA中节点的最终标签以及GCN中节点的最终表示可分别表示为： <span class="math display">\[
+y_{i}^{(\infty)}=\frac{1}{d_{i i}} \sum_{j \in \mathcal{N}(i)} a_{i j} y_{j}^{(\infty)}
+\]</span></p>
+<p><span class="math display">\[
+ \mathbf{x}_{i}^{(\infty)}=\frac{1}{d_{i i}} \sum_{j \in \mathcal{N}(i)} a_{i j} \mathbf{x}_{j}^{(\infty)}
+\]</span></p>
+<hr />
+<h2 id="特征平滑feature-smoothing与标签平滑label-smoothing之间的关系">特征平滑(feature smoothing)与标签平滑(label smoothing)之间的关系</h2>
+<p>作者用的 Smoothing 也可以理解为 Reconstruction，即周围节点可一定程度重构中心节点。</p>
+<blockquote>
+<p>定理1：设定节点特征到节点标签的映射为<span class="math inline">\(\mathcal{M}: \mathbf{x} \rightarrow y\)</span>，改映射是可微且满足L-Lipschitz条件的，即<span class="math inline">\(\left|\mathcal{M}\left(\mathbf{x}_{1}\right)-\mathcal{M}\left(\mathbf{x}_{2}\right)\right| \leq L\left\|\mathbf{x}_{1}-\mathbf{x}_{2}\right\|_{2}\)</span>，则</p>
+</blockquote>
+<p><span class="math display">\[
+x_{i}=\frac{1}{d_{i i}} \sum_{j \in N(i)} a_{i j} x_{j}+\epsilon_{i} \Rightarrow\left|y_{i}-\frac{1}{d_{i i}} \sum_{j \in N(i)} a_{i j} y_{j}\right| \leq L\|\epsilon_i\|+o\left(\max _{j \in N(i)}\left(\left\|x_{j}-x_{i}\right\|\right)\right)
+\]</span></p>
+<p>上述定理证明了<code>标签平滑可以有特征平滑的理论保证</code>。可以学习一组边权重，使中心节点的特征与周围节点的特征在这组权重的加权平均下尽量相近，之后用这组权重求周围节点的标签的加权平均作为中心节点的标签的估计。 其中误差主要由<span class="math inline">\(L\|\epsilon_i\|\)</span>所决定，但在实际中<span class="math inline">\(L\)</span>和<span class="math inline">\(\epsilon_i\)</span>可能非常大</p>
+<blockquote>
+<p>定理2：假定GCN中使用的激活函数是ReLU,<span class="math inline">\(v_a\)</span>无标记的节点，<span class="math inline">\(v_b\)</span>表示有标记的节点，<span class="math inline">\(\beta\)</span>表示无标记节点的比例，通过LPA<span class="math inline">\(k\)</span>次迭代，<span class="math inline">\(v_b\)</span>对<span class="math inline">\(v_a\)</span>标签影响的期望可表示为</p>
+</blockquote>
+<p><span class="math display">\[
+\mathbb{E}\left[I_{l}\left(v_{a}, v_{b} ; k\right)\right]=\sum_{j=1}^{k} \beta^{j} \tilde{I}_{f}\left(v_{a}, v_{b} ; j\right)
+\]</span></p>
+<p>以上定理证明了如果<span class="math inline">\(v_b\)</span>对<span class="math inline">\(v_a\)</span>有较大的标签影响，那么<span class="math inline">\(v_b\)</span>的初始节点表示在很大程度上也会影响<span class="math inline">\(v_a\)</span>的输出特征。</p>
+<blockquote>
+<p>定理3：定义节点<span class="math inline">\(v_a\)</span>以及其标签<span class="math inline">\(y_a\)</span>,如果节点<span class="math inline">\(v_a\)</span>是未被标记的，则所有标记为<span class="math inline">\(y_a\)</span>的节点对<span class="math inline">\(v_a\)</span>的影响正比于它在LPA之后被正确分类为<span class="math inline">\(y_a\)</span>的概率，即</p>
+</blockquote>
+<p><span class="math display">\[
+\sum_{v_{b}: y_{b}=y_{a}} I_{l}\left(v_{a}, v_{b} ; k\right) \propto \operatorname{Pr}\left(\hat{y}_{a}^{l p a}=y_{a}\right)
+\]</span></p>
+<blockquote>
+<p>定理4：(GCN的收缩性)<span class="math inline">\(D(\mathbf{x})=\frac{1}{2} \sum_{v_{i}, v_{j}} \tilde{a}_{i j}\left\|\mathbf{x}_{i}-\mathbf{x}_{j}\right\|_{2}^{2}\)</span>表示节点嵌入<span class="math inline">\(\mathbf{x}\)</span>的距离度量，有</p>
+</blockquote>
+<p><span class="math display">\[
+D\left(\mathbf{h}^{(k)}\right) \leq D\left(\mathbf{x}^{(k)}\right)
+\]</span></p>
+<p>该定理证明了通过GCN一层信息聚合的步骤，相邻节点之间的总距离会减少，因此在同一子图中的节点在嵌入空间中更加靠近。</p>
 
       
     </div>
@@ -294,19 +343,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><h3 id="1-Node-js-npm-git-hexo安装"><a href="#1-Node-js-npm-git-hexo安装" class="headerlink" title="1. Node.js   npm   git  hexo安装"></a>1. Node.js   npm   git  hexo安装</h3><h3 id="2-GitHub注册并建立个人仓库（github-io）"><a href="#2-GitHub注册并建立个人仓库（github-io）" class="headerlink" title="2. GitHub注册并建立个人仓库（github.io）"></a>2. GitHub注册并建立个人仓库（github.io）</h3><h3 id="3-通过SSH密钥建立hexo与github的联系"><a href="#3-通过SSH密钥建立hexo与github的联系" class="headerlink" title="3. 通过SSH密钥建立hexo与github的联系"></a>3. 通过SSH密钥建立hexo与github的联系</h3><p>安装git插件：</p>
+          <h2 id="步骤">步骤：</h2>
+<h3 id="node.js-npm-git-hexo安装">1. Node.js npm git hexo安装</h3>
+<h3 id="github注册并建立个人仓库github.io">2. GitHub注册并建立个人仓库（github.io）</h3>
+<h3 id="通过ssh密钥建立hexo与github的联系">3. 通过SSH密钥建立hexo与github的联系</h3>
+<p>安装git插件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
 <p>在_config.yml中修改配置参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名/用户名.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
 <p>完成后运行 <code>hexo d</code> 将网站上传部署到 GitHub Pages。</p>
 <p>完成！这时访问我们的 GitHub 域名 <code>https://用户名.github.io</code> 就可以看到 Hexo 网站了。</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li> 更换<code>theme</code>主题前，须通过<code>hexo clean</code>清除之前格式。</li>
+<h2 id="注意">注意</h2>
+<ul>
+<li>更换<code>theme</code>主题前，须通过<code>hexo clean</code>清除之前格式。</li>
 <li>博客发布前须通过<code>hexo g</code>生成静态页面，可通过<code>hexo s</code>本地预先检查。</li>
 </ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<h1 id="reference">Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
 
       
     </div>
@@ -359,6 +412,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
